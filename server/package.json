@@ -1,0 +1,22 @@
+{
+  "name": "openapi_airquality",
+  "version": "1.0.0",
+  "description": "공공데이터 포탈의 대기오염정보 api를 활용한 대기정보를 보여주는 웹 사이트",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "OpenAPI",
+    "AirQuality"
+  ],
+  "author": "thinkCat",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "iconv-lite": "^0.4.24",
+    "lodash": "^4.17.21",
+    "node-fetch": "^2.6.1"
+  }
+}

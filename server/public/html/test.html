@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="map" style="width:500px;height:400px;"></div>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2fdc164bace7f0cb0cd13bb4d8c5a421"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.6.2/proj4.js"></script>
+    <!-- <script>
+        var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
+    </script>
+    <script>
+        function transformCoordinate(x, y) {
+            proj4.defs["EPSG:5179"] = "+proj=tmerc +lat_0=38 +lon_0=127.5 +k=0.9996 +x_0=1000000 +y_0=2000000 +ellps=GRS80 +units=m +no_defs";//제공되는 좌표 
+
+            var grs80 = proj4.Proj(proj4.defs["EPSG:5179"])
+            var wgs84 = proj4.Proj(proj4.defs["EPSG:4326"]); //경위도 
+            var p = proj4.toPoint([x, y]);//한국지역정보개발원 좌표 
+            p = proj4.transform(grs80, wgs84, p);
+            return p;
+        }
+    </script>
+    <script>
+        let cooridinate = fetch("/api/kostat/대전", {
+                method: "GET",
+                mode: "cors",
+                headers: {
+                    "Content-Type": 'application/json',
+                },
+            })
+            .then(response => response.json())
+            .then(response => response.result.resultdata[0])
+            .then(infoData => transformCoordinate(parseFloat(infoData.x), parseFloat(infoData.y)));
+
+        var options = { //지도를 생성할 때 필요한 기본 옵션
+            center: new kakao.maps.LatLng(cooridinate.y, cooridinate.x), //지도의 중심좌표.
+            level: 14 //지도의 레벨(확대, 축소 정도)
+        };
+
+        var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
+    </script> -->
+</body>
+</html>
