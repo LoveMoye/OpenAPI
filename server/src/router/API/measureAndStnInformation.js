@@ -18,7 +18,7 @@ async function handleResponse(getMsrStnAccUrl, getMsrStnInfoUrl,) {
         }
     })
     .then(response => response.json())
-    .then(response => console.log(response.response.body))
+    .then(response => response.response.body)
     .catch(err => err);
 
     const mstStnInfo = await fetch(getMsrStnInfoUrl, {
@@ -29,7 +29,7 @@ async function handleResponse(getMsrStnAccUrl, getMsrStnInfoUrl,) {
         }
     })
     .then(response => response.json())
-    .then(response => console.log(response.response.body))
+    .then(response => response.response.body)
     .catch(err => err);
 
     const response = await {
@@ -42,10 +42,14 @@ async function handleResponse(getMsrStnAccUrl, getMsrStnInfoUrl,) {
 router.get("/:stationName/:dataTerm", (req, res) => {
     const stationName = req.params.stationName;
     const dataTerm = req.params.dataTerm;
-    let getMsrStnAccUrl = host + defaultUrl + "/getMsrstnAcctoRltmMesureDnsty" + `/${encodeURI(stationName)}/${dataTerm}`;
+    let getMsrStnAccUrl = host + defaultUrl + "/getMsrstnAcctoRltmMesureDnsty" + `/local/${encodeURI(stationName)}/${dataTerm}`;
     let getMsrStnInfoUrl = host + defaultUrl + "/getMsrstnList" + `/${encodeURI(stationName)}`;
-
+    console.log(getMsrStnAccUrl)
     handleResponse(getMsrStnAccUrl, getMsrStnInfoUrl,)
+    .then(response => {
+        console.log(req.body);
+        return response;
+    })
     .then(response => res.send(response));
 });
 

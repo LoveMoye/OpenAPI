@@ -72,10 +72,10 @@ export default function KakaoMap() {
         async function renderMarker(sido) {
             let i = 0
             for (const stn of measureStationInfo[sido]) {
-                if (i <= 5) {
+                if (stn && i <= 0) {
                     const marker = await fetchData(stn)
                         .then(msrStnInfo => {
-                            // console.log(msrStnInfo);
+                            console.log(msrStnInfo);
                             const coordinate = msrStnInfo.stationInfo[0];
                             const iwContent = `<div style="padding:10px;width:250px;height:200px;">${coordinate.stationName}</div>` +
                                               `<div>${msrStnInfo.measureInfoItems[4].dataTime} PM10등급 ${msrStnInfo.measureInfoItems[4].pm10Grade} PM10농도 ${msrStnInfo.measureInfoItems[4].pm10Value}</div>` + 
@@ -102,16 +102,32 @@ export default function KakaoMap() {
                             markers.push(marker);
                             setMarkers(markers);
                             return marker;
-                        });
+                        })
+                        .catch(err => console.error(err));
                 }
                 i++;
             }
         }
 
         renderMarker("서울");
-        // renderMarker("경기");
-        // renderMarker("인천");
-        // renderMarker("강원");
+        renderMarker("경기");
+        renderMarker("인천");
+        renderMarker("강원");
+        renderMarker("충남");
+        renderMarker("대전");
+        renderMarker("충북");
+        renderMarker("대구");
+        renderMarker("세종");
+        renderMarker("부산");
+        renderMarker("울산");
+        renderMarker("경북");
+        renderMarker("경남");
+        renderMarker("전남");
+        renderMarker("광주");
+        renderMarker("전북");
+        renderMarker("제주");
+        
+
 
         // measureStations["서울"].forEach((stn, i) => {
         //     if (i <= 1) {
@@ -152,8 +168,8 @@ export default function KakaoMap() {
 
 return (
     <div id="map" style={{
-        width: '1000px',
-        height: '1000px'
+        width: '500px',
+        height: '500px'
     }}>
     </div>
 )

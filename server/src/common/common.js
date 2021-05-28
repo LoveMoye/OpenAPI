@@ -1,6 +1,6 @@
 const airqualityReqURL = `http://apis.data.go.kr/B552584/ArpltnInforInqireSvc`;
 const defaultQueryRequestParams = {
-    serviceKey: process.env.ServiceKey_AirQuality,
+    serviceKey: process.env.SERVICEKEY,
     returnType: "json",
     numOfRows: 1,
     pageNo: 1,
@@ -8,7 +8,7 @@ const defaultQueryRequestParams = {
 
 const measureStnInfoReqURL = `http://apis.data.go.kr/B552584/MsrstnInfoInqireSvc`;
 const defaultMsrStnQueryRequestParams = {
-    serviceKey: process.env.ServiceKey_AirQuality,
+    serviceKey: process.env.SERVICEKEY,
     returnType: "json",
     numOfRows: 1,
     pageNo: 1,
